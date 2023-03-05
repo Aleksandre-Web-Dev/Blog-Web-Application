@@ -1,0 +1,90 @@
+<form action="" [formGroup]="postForm" (ngSubmit)="submit()">
+  <h1 class="header header-md">Create Post</h1>
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid: postForm.get('title')?.touched && postForm.get('title')?.invalid
+    }"
+  >
+    <label for="title" class="form-block__label">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      class="form-block__input"
+      formControlName="title"
+      placeholder="Enter Post Title"
+    />
+    <div
+      *ngIf="postForm.get('title')?.touched && postForm.get('title')?.invalid"
+      class="form-block__validation"
+    >
+      <p
+        *ngIf="postForm.get('title')?.errors?.['required']"
+        class="form-block__error"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid:
+        postForm.get('author')?.touched && postForm.get('author')?.invalid
+    }"
+  >
+    <label for="author" class="form-block__label">Author</label>
+    <input
+      type="text"
+      name="author"
+      id="author"
+      class="form-block__input"
+      formControlName="author"
+      placeholder="Enter Post Author"
+    />
+    <div
+      class="form-block__validation"
+      *ngIf="postForm.get('author')?.touched && postForm.get('author')?.invalid"
+    >
+      <p
+        class="form-block__error"
+        *ngIf="postForm.get('author')?.errors?.['required']"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid:
+        postForm.get('content')?.touched && postForm.get('content')?.invalid
+    }"
+  >
+    <quill-editor
+      formControlName="content"
+      class="form-block__editor"
+    ></quill-editor>
+    <div
+      class="form-block__validation"
+      *ngIf="postForm.get('content')?.touched && postForm.get('content')?.invalid"
+    >
+      <p
+        class="form-block__error"
+        *ngIf="postForm.get('content')?.errors?.['content']"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-black login__submit"
+    [disabled]="postForm.invalid"
+  >
+    Create Post
+  </button>
+</form>

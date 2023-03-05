@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+@import "/node_modules//quill/dist/quill.core.css";
+@import "/node_modules//quill/dist/quill.snow.css";
+
+$primary-color: black;
+$secondary-color: gray;
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px;
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.header {
+  font-weight: bold;
+  &-sm {
+    color: rgb(48, 48, 48);
+    font-size: 28px;
+  }
+  &-md {
+    color: rgb(24, 24, 24);
+    font-weight: bold;
+    font-size: 36px;
+  }
+  &-lg {
+    color: $primary-color;
+    font-size: 48px;
+  }
+}
+
+.text {
+  &-sm {
+    font-size: 14px;
+  }
+  &-md {
+    font-size: 18px;
+  }
+  &-lg {
+    font-size: 24px;
+  }
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 18px 30px;
+  margin: 24px 0px;
+  border: 1px solid $primary-color;
+  max-height: 20%;
+
+  &__header {
+    margin: 10px 0px;
+  }
+
+  &__body .ql-editor {
+    padding: 0px;
+  }
+
+  &__content .ql-editor {
+    max-height: 200px;
+    overflow-y: hidden;
+  }
+
+  &__author {
+    margin: 8px 0px;
+  }
+}
+
+.nav {
+  list-style: none;
+  &__item:first-child {
+    margin-left: 0 !important;
+  }
+  &__item {
+    margin: 0px 12px;
+  }
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $primary-color;
+  font-size: 14px;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.btn {
+  width: 100%;
+  cursor: pointer;
+
+  &-black {
+    color: white;
+    background-color: $primary-color;
+    padding: 8px 16px;
+    max-width: 148px;
+    font-weight: 500;
+  }
+  &-transparent {
+    display: inline-flex;
+    color: $primary-color;
+    font-weight: 400;
+  }
+
+  &-transparent__icon {
+    margin-right: 6px;
+  }
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0px;
+  &__label {
+    font-weight: bold;
+  }
+
+  &__input {
+    font-size: 16px;
+    border: 1px solid $primary-color;
+    min-height: 36px;
+    padding: 8px;
+    margin-top: 12px;
+  }
+
+  &__editor .ql-editor {
+    height: 400px;
+  }
+
+  &__validation {
+    margin: 8px 0px;
+  }
+
+  &__error {
+    color: red !important;
+    font-size: 12px;
+  }
+
+  .ng-invalid.ng-touched {
+    border: 2px solid red;
+  }
+
+  .ng-valid.ng-touched {
+    border: 2px solid green;
+  }
+}

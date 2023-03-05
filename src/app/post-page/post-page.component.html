@@ -1,0 +1,33 @@
+<div *ngIf="post$ | async as post; else loading">
+  <div class="post">
+    <div class="post__header">
+      <a class="btn btn-transparent post__action" routerLink="/">
+        <span class="btn-transparent__icon"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              id="Icon_awesome-arrow-left"
+              data-name="Icon awesome-arrow-left"
+              d="M9.194,17.576l-.793.813a.838.838,0,0,1-1.211,0L.248,11.27a.892.892,0,0,1,0-1.242L7.19,2.906a.838.838,0,0,1,1.211,0l.793.813a.9.9,0,0,1-.014,1.257l-4.3,4.206H15.139a.866.866,0,0,1,.857.879v1.172a.866.866,0,0,1-.857.879H4.876l4.3,4.206A.89.89,0,0,1,9.194,17.576Z"
+              transform="translate(0.004 -2.647)"
+            />
+          </svg>
+        </span>
+        Go Back
+      </a>
+      <h1 class="header-md post__title">
+        {{ post.title }}
+      </h1>
+      <p class="text-lg post__author">{{ post.author }}</p>
+    </div>
+    <div class="post__body">
+      <quill-view-html [content]="post.content"></quill-view-html>
+    </div>
+    <div class="post__footer"></div>
+  </div>
+</div>
+<ng-template #loading> Post is Loading.... </ng-template>

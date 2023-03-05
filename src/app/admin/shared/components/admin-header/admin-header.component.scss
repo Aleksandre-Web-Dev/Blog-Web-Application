@@ -1,0 +1,12 @@
+.admin-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  &__nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 76px;
+  }
+}

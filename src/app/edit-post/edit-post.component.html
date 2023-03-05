@@ -1,0 +1,97 @@
+<form
+  action=""
+  [formGroup]="editForm"
+  *ngIf="editForm; else loading"
+  (ngSubmit)="submit()"
+>
+<h1 class="header-md">Edit Post</h1>
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid: editForm.get('title')?.touched && editForm.get('title')?.invalid
+    }"
+  >
+    <label for="title" class="form-block__label">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      class="form-block__input"
+      formControlName="title"
+      placeholder="Enter Post Title"
+    />
+    <div
+      *ngIf="editForm.get('title')?.touched && editForm.get('title')?.invalid"
+      class="form-block__validation"
+    >
+      <p
+        *ngIf="editForm.get('title')?.errors?.['required']"
+        class="form-block__error"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid:
+        editForm.get('author')?.touched && editForm.get('author')?.invalid
+    }"
+  >
+    <label for="author" class="form-block__label">author</label>
+    <input
+      type="text"
+      name="author"
+      id="author"
+      class="form-block__input"
+      formControlName="author"
+      placeholder="Enter Post author"
+    />
+    <div
+      *ngIf="editForm.get('author')?.touched && editForm.get('author')?.invalid"
+      class="form-block__validation"
+    >
+      <p
+        *ngIf="editForm.get('author')?.errors?.['required']"
+        class="form-block__error"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid:
+        editForm.get('content')?.touched && editForm.get('content')?.invalid
+    }"
+  >
+    <label for="content" class="form-block__label">content</label>
+    <quill-editor formControlName="content" class="form-block__editor"></quill-editor>
+    <div
+      *ngIf="
+        editForm.get('content')?.touched && editForm.get('content')?.invalid
+      "
+      class="form-block__validation"
+    >
+      <p
+        *ngIf="editForm.get('content')?.errors?.['required']"
+        class="form-block__error"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-black login__submit"
+    [disabled]="editForm.invalid"
+  >
+    Make Changes
+  </button>
+</form>
+
+<ng-template #loading>
+  <p>Post is Loading</p>
+</ng-template>

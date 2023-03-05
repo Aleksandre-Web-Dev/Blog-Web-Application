@@ -1,0 +1,14 @@
+<div class="admin-header">
+  <h1 [routerLink]="['/admin', 'dashboard']" class="logo">LOGO</h1>
+  <ul class="nav admin-header__nav">
+    <li class="nav__item">
+      <a [routerLink]="['/admin', 'dashboard']" class="nav__link">Main</a>
+    </li>
+    <li class="nav__item">
+      <a [routerLink]="['/admin', 'createPost']" class="nav__link">Create</a>
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: start;
+  padding: 16px;
+  color:white;
+}
+
+td {
+  padding: 16px;
+}
+
+thead {
+  background-color:darkgray;
+}
+
+th:nth-last-child(1) {
+  text-align: end;
+}
+
+td:nth-last-child(1) {
+  text-align: end;
+}
+
+.table-action {
+  border: none;
+  color: black;
+  margin: 0px 8px;
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+}

@@ -1,0 +1,43 @@
+<div class="posts" *ngIf="posts.length; else loading">
+  <div class="form-block">
+    <input
+      type="text"
+      name="search"
+      id="search"
+      class="form-block__input"
+      placeholder="Search for posts"
+      [(ngModel)]="searchText"
+    />
+  </div>
+  <table>
+    <thead>
+      <th>#</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let post of posts | SearchPosts : searchText; let idx = index"
+      >
+        <td>{{ idx + 1 }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.author }}</td>
+        <td>{{ post.creation_date | date : "short" }}</td>
+        <td>
+          <a
+            class="table-action"
+            [routerLink]="['/admin', 'editPost', post.id, 'edit']"
+            >Edit</a
+          ><a class="table-action" (click)="delete(post.id)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loading>
+  <p>Page is loading...</p>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="post">
+  <div class="post__header">
+    <h1 class="header-md post__title">
+      {{ post.title }}
+    </h1>
+    <p class="text-lg post__author">{{ post.author }}</p>
+  </div>
+  <div class="post__body">
+    <div class="post__content">
+      <quill-view-html [content]="post.content"></quill-view-html>
+    </div>
+  </div>
+  <div class="post__footer">
+    <button
+      class="btn btn-black post__action"
+      [routerLink]="['/post', post.id]"
+    >
+      Read More
+    </button>
+  </div>
+</div>

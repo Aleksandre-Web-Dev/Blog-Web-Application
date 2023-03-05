@@ -1,0 +1,4 @@
+<div class="wrapper">
+  <app-admin-header *ngIf="authService.isAuthenticated()"></app-admin-header>
+  <router-outlet></router-outlet>
+</div>

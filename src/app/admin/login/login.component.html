@@ -1,0 +1,92 @@
+<div class="login">
+  <form
+    action=""
+    class="form login__form"
+    (ngSubmit)="submit()"
+    [formGroup]="form"
+  >
+    <h1 class="header-lg login__header">Login</h1>
+    <div
+      class="form-block"
+      [ngClass]="{
+        invalid: form.get('email')?.touched && form.get('email')?.invalid
+      }"
+    >
+      <label for="email" class="form-block__label">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-block__input"
+        formControlName="email"
+        placeholder="Enter Email Address"
+      />
+      <div
+        *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+        class="form-block__validation"
+      >
+        <p
+          *ngIf="form.get('email')?.errors?.['required']"
+          class="form-block__error"
+        >
+          This field is required
+        </p>
+        <p
+          *ngIf="form.get('email')?.errors?.['email']"
+          class="form-block__error"
+        >
+          Incorrect email format
+        </p>
+      </div>
+    </div>
+    <div
+      class="form-block"
+      [ngClass]="{
+        invalid: form.get('password')?.touched && form.get('password')?.invalid
+      }"
+    >
+      <label for="password" class="form-block__label">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="form-block__input"
+        formControlName="password"
+        placeholder="Enter Password"
+      />
+      <div
+        class="form-block__validation"
+        *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+      >
+        <p
+          class="form-block__error"
+          *ngIf="form.get('password')?.errors?.['required']"
+        >
+          This field is required
+        </p>
+        <p
+          class="form-block__error"
+          *ngIf="form.get('password')?.errors?.['minlength']"
+        >
+          Please enter at least 6 characters
+        </p>
+      </div>
+    </div>
+    <div
+      class="form-error login__error"
+      *ngIf="authService.errorStream$ | async as error"
+    >
+      {{ error }}
+    </div>
+    <div>
+
+      <button
+      type="submit"
+      class="btn btn-black login__submit"
+      [disabled]="form.invalid"
+      >
+      LOGIN
+    </button>
+  </div>
+  </form>
+</div>
