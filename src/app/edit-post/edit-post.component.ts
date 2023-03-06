@@ -48,7 +48,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
         id: this.postId,
       })
       .subscribe((x) => {
-        this.router.navigate(['/admin','dashboard'])
+        this.router.navigate(['/admin', 'dashboard']);
         console.log(x);
       });
   }

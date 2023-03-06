@@ -40,12 +40,15 @@ $secondary-color: gray;
 
 .text {
   &-sm {
+    font-weight: lighter;
     font-size: 14px;
   }
   &-md {
+    font-weight: normal;
     font-size: 18px;
   }
   &-lg {
+    font-weight: bold;
     font-size: 24px;
   }
 }
@@ -55,9 +58,7 @@ $secondary-color: gray;
   flex-direction: column;
   justify-content: start;
   padding: 18px 30px;
-  margin: 24px 0px;
   border: 1px solid $primary-color;
-  max-height: 20%;
 
   &__header {
     margin: 10px 0px;
@@ -75,6 +76,13 @@ $secondary-color: gray;
   &__author {
     margin: 8px 0px;
   }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 60);
 }
 
 .nav {
@@ -102,6 +110,7 @@ $secondary-color: gray;
 
 .btn {
   width: 100%;
+  text-align: center;
   cursor: pointer;
 
   &-black {

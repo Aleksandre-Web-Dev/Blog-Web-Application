@@ -33,11 +33,9 @@ export class PostService {
           return post;
         })
       );
-
   }
 
   deletePost(id: string): Observable<void> {
-
     return this.http.delete<void>(
       `${this.baseUrl}${environment.apiPaths.post.delete}/${id}`
     );
@@ -48,6 +46,5 @@ export class PostService {
       `${this.baseUrl}${environment.apiPaths.post.update}`,
       post
     );
-
   }
 }

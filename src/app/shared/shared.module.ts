@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
     UserHeaderComponent,
     QuillModule,
     ReactiveFormsModule,
-    MainSearch,FormsModule
+    MainSearch,
+    FormsModule,
   ],
   declarations: [UserHeaderComponent, MainSearch],
 })

@@ -1,4 +1,4 @@
-<div class="posts" *ngIf="posts.length; else loading">
+<div *ngIf="posts.length; else loading">
   <div class="form-block">
     <input
       type="text"
@@ -9,29 +9,32 @@
       [(ngModel)]="searchText"
     />
   </div>
-  <table>
-    <thead>
-      <th>#</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Date</th>
-      <th>Actions</th>
+  <table class="posts-table">
+    <thead class="header-row posts-table__header">
+      <th class="header-row__item">#</th>
+      <th class="header-row__item">Title</th>
+      <th class="header-row__item">Author</th>
+      <th class="header-row__item">Date</th>
+      <th class="header-row__item">Actions</th>
     </thead>
 
-    <tbody>
+    <tbody class="posts-table__body">
       <tr
+        class="body-row"
         *ngFor="let post of posts | SearchPosts : searchText; let idx = index"
       >
-        <td>{{ idx + 1 }}</td>
-        <td>{{ post.title }}</td>
-        <td>{{ post.author }}</td>
-        <td>{{ post.creation_date | date : "short" }}</td>
-        <td>
+        <td class="body-row__item">{{ idx + 1 }}</td>
+        <td class="body-row__item">{{ post.title }}</td>
+        <td class="body-row__item">{{ post.author }}</td>
+        <td class="body-row__item">
+          {{ post.creation_date | date : "short" }}
+        </td>
+        <td class="body-row__item">
           <a
-            class="table-action"
+            class="body-row__action"
             [routerLink]="['/admin', 'editPost', post.id, 'edit']"
             >Edit</a
-          ><a class="table-action" (click)="delete(post.id)">Delete</a>
+          ><a class="body-row__action" (click)="delete(post.id)">Delete</a>
         </td>
       </tr>
     </tbody>

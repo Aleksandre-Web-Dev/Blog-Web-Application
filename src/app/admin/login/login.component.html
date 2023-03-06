@@ -1,10 +1,5 @@
-<div class="login">
-  <form
-    action=""
-    class="form login__form"
-    (ngSubmit)="submit()"
-    [formGroup]="form"
-  >
+<div class="card login__form">
+  <form (ngSubmit)="submit()" [formGroup]="form">
     <h1 class="header-lg login__header">Login</h1>
     <div
       class="form-block"
@@ -73,20 +68,19 @@
       </div>
     </div>
     <div
-      class="form-error login__error"
+      class="form-block__error login__error"
       *ngIf="authService.errorStream$ | async as error"
     >
       {{ error }}
     </div>
     <div>
-
       <button
-      type="submit"
-      class="btn btn-black login__submit"
-      [disabled]="form.invalid"
+        type="submit"
+        class="btn btn-black login__submit"
+        [disabled]="form.invalid"
       >
-      LOGIN
-    </button>
-  </div>
+        LOGIN
+      </button>
+    </div>
   </form>
 </div>

@@ -34,7 +34,7 @@ export class CreatePostComponent implements OnInit {
     };
 
     this.post.createPost(post).subscribe((x) => {
-      
-    this.route.navigate(['/admin','dashboard'])});
+      this.route.navigate(['/admin', 'dashboard']);
+    });
   }
 }

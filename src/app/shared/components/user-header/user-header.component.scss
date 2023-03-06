@@ -1,11 +1,3 @@
-@import "../../../../styles.scss";
-
-.header {
-  &__primary {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 100px;
-  }
+.user-header__logo {
+  margin-top: 12px;
 }

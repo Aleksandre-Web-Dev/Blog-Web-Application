@@ -1,10 +1,9 @@
 <form
-  action=""
   [formGroup]="editForm"
   *ngIf="editForm; else loading"
   (ngSubmit)="submit()"
 >
-<h1 class="header-md">Edit Post</h1>
+  <h1 class="header header-md">Edit Post</h1>
   <div
     class="form-block"
     [ngClass]="{
@@ -68,7 +67,10 @@
     }"
   >
     <label for="content" class="form-block__label">content</label>
-    <quill-editor formControlName="content" class="form-block__editor"></quill-editor>
+    <quill-editor
+      formControlName="content"
+      class="form-block__editor"
+    ></quill-editor>
     <div
       *ngIf="
         editForm.get('content')?.touched && editForm.get('content')?.invalid
@@ -83,11 +85,7 @@
       </p>
     </div>
   </div>
-  <button
-    type="submit"
-    class="btn btn-black login__submit"
-    [disabled]="editForm.invalid"
-  >
+  <button type="submit" class="btn btn-black" [disabled]="editForm.invalid">
     Make Changes
   </button>
 </form>

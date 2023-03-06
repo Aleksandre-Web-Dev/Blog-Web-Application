@@ -1,4 +1,4 @@
-<form action="" [formGroup]="postForm" (ngSubmit)="submit()">
+<form class="form" [formGroup]="postForm" (ngSubmit)="submit()">
   <h1 class="header header-md">Create Post</h1>
   <div
     class="form-block"
@@ -69,7 +69,9 @@
     ></quill-editor>
     <div
       class="form-block__validation"
-      *ngIf="postForm.get('content')?.touched && postForm.get('content')?.invalid"
+      *ngIf="
+        postForm.get('content')?.touched && postForm.get('content')?.invalid
+      "
     >
       <p
         class="form-block__error"
@@ -82,7 +84,7 @@
 
   <button
     type="submit"
-    class="btn btn-black login__submit"
+    class="btn btn-black"
     [disabled]="postForm.invalid"
   >
     Create Post
