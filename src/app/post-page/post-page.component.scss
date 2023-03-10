@@ -1,10 +1,21 @@
-
-
 .post {
   border: none !important;
   padding: 0px;
 
-  &__action {
-    margin-bottom: 12px;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__author {
+    margin-bottom: 10px;
+  }
+  &__date {
+    margin: 8px;
+  }
+  &__actions {
+    margin-top: 24px;
   }
 }

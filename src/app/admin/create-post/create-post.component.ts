@@ -13,14 +13,32 @@ import { formatDate } from '@angular/common';
 export class CreatePostComponent implements OnInit {
   constructor(private post: PostService, private route: Router) {}
   postForm!: FormGroup;
+  tagsArray: Array<string> = [];
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
       title: new FormControl(null, Validators.required),
       author: new FormControl(null, Validators.required),
       content: new FormControl(null, Validators.required),
+      tags: new FormControl(null),
     });
   }
+
+  addTag() {
+    const tag = this.postForm.controls['tags'].value;
+    if (tag.trim()) {
+      this.tagsArray.push(tag);
+      this.postForm.controls['tags'].reset();
+    } else {
+      return;
+    }
+  }
+
+  removeTag(tag: string) {
+    const tagIndex = this.tagsArray.indexOf(tag);
+    this.tagsArray.splice(tagIndex, 1);
+  }
+
   submit() {
     if (this.postForm.invalid) {
       return;
@@ -31,6 +49,7 @@ export class CreatePostComponent implements OnInit {
       author: this.postForm.controls['author'].value,
       content: this.postForm.controls['content'].value,
       creation_date: currentDate,
+      tags: this.tagsArray,
     };
 
     this.post.createPost(post).subscribe((x) => {

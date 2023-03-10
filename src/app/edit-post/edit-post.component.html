@@ -59,6 +59,46 @@
       </p>
     </div>
   </div>
+
+  <div
+    class="form-block"
+    [ngClass]="{
+      invalid: editForm.get('tags')?.touched && editForm.get('tags')?.invalid
+    }"
+  >
+    <label for="tags" class="form-block__label">Tags</label>
+    <div class="form-block__container">
+      <input
+        type="text"
+        name="tags"
+        id="tags"
+        class="form-block__input"
+        formControlName="tags"
+        placeholder="Enter Post Tags"
+        (keyup.enter)="addTag()"
+      />
+      <a class="form-block__action" (click)="addTag()">+</a>
+    </div>
+    <div *ngIf="tagsArray.length" class="form-block__tags">
+      <a class="tag form-block__tag" *ngFor="let tag of tagsArray"
+        >{{ tag | uppercase }}
+        <span class="form-block__icon" (click)="removeTag(tag)">X</span></a
+      >
+    </div>
+
+    <div
+      class="form-block__validation"
+      *ngIf="editForm.get('tags')?.touched && editForm.get('tags')?.invalid"
+    >
+      <p
+        class="form-block__error"
+        *ngIf="editForm.get('tags')?.errors?.['required']"
+      >
+        This field is required
+      </p>
+    </div>
+  </div>
+
   <div
     class="form-block"
     [ngClass]="{

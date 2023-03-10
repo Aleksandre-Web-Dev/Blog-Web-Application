@@ -4,30 +4,30 @@
     <div
       class="form-block"
       [ngClass]="{
-        invalid: form.get('email')?.touched && form.get('email')?.invalid
+        invalid: form.get('username')?.touched && form.get('username')?.invalid
       }"
     >
-      <label for="email" class="form-block__label">Email</label>
+      <label for="username" class="form-block__label">Email</label>
       <input
-        type="email"
-        name="email"
-        id="email"
+        type="username"
+        name="username"
+        id="username"
         class="form-block__input"
-        formControlName="email"
+        formControlName="username"
         placeholder="Enter Email Address"
       />
       <div
-        *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+        *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
         class="form-block__validation"
       >
         <p
-          *ngIf="form.get('email')?.errors?.['required']"
+          *ngIf="form.get('username')?.errors?.['required']"
           class="form-block__error"
         >
           This field is required
         </p>
         <p
-          *ngIf="form.get('email')?.errors?.['email']"
+          *ngIf="form.get('username')?.errors?.['username']"
           class="form-block__error"
         >
           Incorrect email format

@@ -1,7 +1,7 @@
 <div *ngIf="post$ | async as post; else loading">
   <div class="post">
-    <div class="post__header">
-      <a class="btn btn-transparent post__action" routerLink="/">
+    <div class="post__actions">
+      <a class="btn btn-transparent" routerLink="/">
         <span class="btn-transparent__icon"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -19,10 +19,26 @@
         </span>
         Go Back
       </a>
-      <h1 class="header header-md post__title">
-        {{ post.title }}
-      </h1>
-      <p class="text-lg post__author">{{ post.author }}</p>
+    </div>
+    <div class="post__header">
+      <div class="post__title">
+        <p class="text text-sm">Author</p>
+        <p class="text text-md post__author">
+          {{ post.author }}
+        </p>
+        <h1 class="header header-md">
+          {{ post.title }}
+        </h1>
+        <div class="post__tags">
+          <span class="tag" *ngFor="let tag of tagsArray">
+            {{ tag }}
+          </span>
+        </div>
+      </div>
+      <div class="post__date">
+        <p class="text text-sm">Created On</p>
+        <p class="text text-md">{{ post.creation_date | date : "medium" }}</p>
+      </div>
     </div>
     <div class="post__body">
       <quill-view-html [content]="post.content"></quill-view-html>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Post } from '../../interfaces';
 
 @Component({
@@ -6,6 +6,10 @@ import { Post } from '../../interfaces';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
 })
-export class PostComponent {
+export class PostComponent implements OnInit {
   @Input() post!: Post;
+  tagsArray: Array<string> = [];
+  ngOnInit(): void {
+    this.tagsArray = (this.post.tags as any).split(',');
+  }
 }

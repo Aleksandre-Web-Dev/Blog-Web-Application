@@ -1,5 +1,5 @@
 export interface User {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -9,4 +9,5 @@ export interface Post {
   author: string;
   content: string;
   creation_date: any;
+  tags: Array<string>;
 }

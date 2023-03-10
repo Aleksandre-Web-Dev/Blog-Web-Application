@@ -11,6 +11,7 @@ import { Post } from '../shared/interfaces';
 })
 export class PostPageComponent implements OnInit {
   post$!: Observable<Post>;
+  tagsArray: Array<string> = [];
   constructor(
     private postsService: PostService,
     private route: ActivatedRoute
@@ -21,5 +22,10 @@ export class PostPageComponent implements OnInit {
         return this.postsService.getById(params['id']);
       })
     );
+
+    this.post$.subscribe((post: Post) => {
+      this.tagsArray = (post.tags as any).split(',');
+      console.log(this.tagsArray);
+    });
   }
 }

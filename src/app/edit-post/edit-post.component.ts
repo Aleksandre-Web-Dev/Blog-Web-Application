@@ -12,7 +12,8 @@ import { PostService } from '../shared/components/post.service';
 export class EditPostComponent implements OnInit, OnDestroy {
   editForm!: FormGroup;
   updateSub: Subscription = new Subscription();
-  postId: string = '';
+  postId!: string;
+  tagsArray!: Array<string>;
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
@@ -28,15 +29,32 @@ export class EditPostComponent implements OnInit, OnDestroy {
       )
       .subscribe((post: any) => {
         this.postId = post.id;
+        this.tagsArray = post.tags.split(',');
         this.editForm = new FormGroup({
           title: new FormControl(post.title, Validators.required),
           author: new FormControl(post.author, Validators.required),
           content: new FormControl(post.content, Validators.required),
+          tags: new FormControl(null),
         });
       });
   }
   ngOnDestroy(): void {
     this.updateSub.unsubscribe();
+  }
+
+  addTag() {
+    const tag = this.editForm.controls['tags'].value;
+    if (tag.trim()) {
+      this.tagsArray.push(tag);
+      this.editForm.controls['tags'].reset();
+    } else {
+      return;
+    }
+  }
+
+  removeTag(tag: string) {
+    const tagIndex = this.tagsArray.indexOf(tag);
+    this.tagsArray.splice(tagIndex, 1);
   }
 
   submit() {
@@ -46,6 +64,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
         author: this.editForm.controls['author'].value,
         content: this.editForm.controls['content'].value,
         id: this.postId,
+        tag: this.tagsArray.toString(),
       })
       .subscribe((x) => {
         this.router.navigate(['/admin', 'dashboard']);

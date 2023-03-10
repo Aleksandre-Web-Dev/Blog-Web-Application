@@ -24,7 +24,7 @@ export class AuthService {
 
   login(user: User): Observable<any> {
     return this.http
-      .post(`${this.baseUrl}/${environment.apiPaths.user.login}`, user)
+      .post(`${this.baseUrl}${environment.apiPaths.user.login}`, user)
       .pipe(tap(this.setToken), catchError(this.handleError.bind(this)));
   }
 

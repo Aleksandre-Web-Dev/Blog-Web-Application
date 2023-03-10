@@ -39,6 +39,7 @@ $secondary-color: gray;
 }
 
 .text {
+  display: block;
   &-sm {
     font-weight: lighter;
     font-size: 14px;
@@ -60,6 +61,10 @@ $secondary-color: gray;
   padding: 18px 30px;
   border: 1px solid $primary-color;
 
+  &__tags {
+    margin: 16px 0px;
+  }
+
   &__header {
     margin: 10px 0px;
   }
@@ -71,10 +76,6 @@ $secondary-color: gray;
   &__content .ql-editor {
     max-height: 200px;
     overflow-y: hidden;
-  }
-
-  &__author {
-    margin: 8px 0px;
   }
 }
 
@@ -114,6 +115,7 @@ $secondary-color: gray;
   cursor: pointer;
 
   &-black {
+    border: none;
     color: white;
     background-color: $primary-color;
     padding: 8px 16px;
@@ -135,16 +137,37 @@ $secondary-color: gray;
   display: flex;
   flex-direction: column;
   margin: 16px 0px;
+
+  &__container {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  &__icon {
+    color: white;
+    cursor: pointer;
+  }
+
+  &__action {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-size: 36px;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
   &__label {
     font-weight: bold;
   }
 
   &__input {
-    font-size: 16px;
-    border: 1px solid $primary-color;
+    width: 100%;
     min-height: 36px;
     padding: 8px;
     margin-top: 12px;
+    font-size: 16px;
+    border: 1px solid $primary-color;
   }
 
   &__editor .ql-editor {
@@ -167,4 +190,14 @@ $secondary-color: gray;
   .ng-valid.ng-touched {
     border: 2px solid green;
   }
+}
+
+.tag {
+  text-align: center;
+  padding: 4px 8px;
+  margin-right: 12px;
+  background-color: $primary-color;
+  color: white;
+  font-size: 14px;
+  max-width: 50px;
 }
